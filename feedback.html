@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%); /* Improved background */
+        }
+        .feedback-container {
+            border: 1px solid rgb(155, 235, 175);
+            width: 400px;
+            padding: 3rem;
+            background-color: rgba(181, 181, 181, 0.7); /* Darker background */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 2px solid #797575;
+            border-radius: 30px;
+            background: #7572724d;
+            border-color: transparent;
+            -webkit-text-fill-color: aliceblue;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: #124072;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2f639b;
+        }
+        #submitBtn {
+            background-color: #6e6866;
+        }
+        #submitBtn:hover {
+            background-color: #82868a;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <center><h1>Feedback</h1></center>
+        <form id="feedbackForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <textarea id="suggestion" placeholder="Your Suggestion" rows="4" required></textarea>
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const suggestion = document.getElementById('suggestion').value.trim();
+
+            // Validation checks
+            if (username === '' || username.length < 3) {
+                alert('Username must be at least 3 characters long.');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (!validatePhone(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return;
+            }
+
+            if (suggestion === '') {
+                alert('Please provide your suggestion.');
+                return;
+            }
+
+            // If all validations pass
+            alert('Feedback submitted!');
+        });
+
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Phone validation function (for 10-digit numbers)
+        function validatePhone(phone) {
+            const re = /^\d{10}$/;
+            return re.test(phone);
+        }
+    </script>
+</body>
+</html>

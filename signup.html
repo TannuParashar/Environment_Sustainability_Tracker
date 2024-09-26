@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            backdrop-filter: brightness(0%);
+            width: 100%;
+            height: 100%;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .login-container {
+            border: 1px solid rgb(241, 232, 232);
+            width: 400px;
+            padding: 3rem;
+            background-color: rgba(65, 62, 62, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(248, 248, 247, 0.829);
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            margin: 0 0 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-container {
+            position: relative;
+            margin: 1rem 0;
+        }
+        input {
+            padding: 15px;
+            border: 4px solid #797575;
+            border-radius: 30px;
+            box-sizing: border-box;
+            background: #7572724d;
+            border-color: transparent;
+            -webkit-text-fill-color: aliceblue;
+            width: 100%;
+            transition: border-color 0.2s ease;
+        }
+        input:focus {
+            border-color: #124072;
+            outline: none;
+        }
+        label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #bbb;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+        input:focus + label,
+        input:not(:placeholder-shown) + label {
+            top: -22px;
+            left: 20px;
+            font-size: 20px;
+            color: #f9f9f9;
+        }
+        .password-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .show-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: white;
+        }
+        button {
+            padding: 15px;
+            background-color: #124072;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        button:hover {
+            background-color: #2f639b;
+        }
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 0.5rem;
+            background-color: #2c7ace;
+            color: rgb(248, 248, 248);
+            border-radius: 100px;
+            cursor: pointer;
+        }
+        #forg {
+            color: #007BFF;
+            text-decoration: none;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        #forg:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+    <a href="login.html" class="back-btn">&#8592;</a>
+    <div class="login-container">
+        <center><h1>Signup</h1></center>
+        <form id="signupForm">
+            <div class="input-container">
+                <input type="text" id="fullname" placeholder=" " required>
+                <label for="fullname">Name</label>
+            </div>
+            <div class="input-container">
+                <input type="text" id="username" placeholder=" " required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-container">
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Email Address</label>
+            </div>
+            <div class="input-container">
+                <input type="tel" id="phone" placeholder=" " required>
+                <label for="phone">Phone Number</label>
+            </div>
+
+            <!-- Password field with show password icon -->
+            <div class="input-container password-container">
+                <input type="password" id="password" placeholder=" " required>
+                <label for="password">Password</label>
+                <span class="show-password" onclick="togglePassword('password')">👁️</span>
+            </div>
+            
+            <!-- Confirm Password field with show password icon -->
+            <div class="input-container password-container">
+                <input type="password" id="confirmPassword" placeholder=" " required>
+                <label for="confirmPassword">Confirm Password</label>
+                <span class="show-password" onclick="togglePassword('confirmPassword')">👁️</span>
+            </div>
+
+            <button type="submit">Sign Up</button><br>
+            <center><h3><a href="forgetpage.html" id="forg">Forgot Password?</a></h3></center>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const fieldType = passwordField.getAttribute('type');
+            if (fieldType === 'password') {
+                passwordField.setAttribute('type', 'text');
+            } else {
+                passwordField.setAttribute('type', 'password');
+            }
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Signup submitted!');
+        });
+    </script>
+</body>
+</html>
+
