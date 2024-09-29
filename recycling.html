@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promote Recycling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd;
+            text-align: center;
+        }
+
+        header {
+            background-color: #1976d2;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container,
+        .results,
+        .impact-section,
+        .tips-section,
+        .actions-section,
+        .goal-section {
+            color:black;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0277bd;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .impact-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tips-section ul,
+        .actions-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #1976d2;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #93c8fd;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #0277bd; 
+        }
+
+        .progress-container {
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            height: 20px;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .progress-bar {
+            background-color: #43a047;
+            height: 100%;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            line-height: 20px; /* Center text vertically */
+            transition: width 0.5s; /* Smooth transition */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="logorecycle.jpeg" alt="Logo">
+        <h1>Promote Recycling</h1>
+        <p>Join the movement for a cleaner, sustainable planet!</p>
+    </header>
+
+    <main>
+        <!-- Goal Setting Section -->
+        <div class="goal-section">
+            <h2>Set Your Recycling Goal</h2>
+            <form id="goalForm">
+                <label for="goal">Your Target Recycling Amount (kg/month):</label>
+                <input type="number" id="goal" required>
+                <button type="submit">Set Goal</button>
+            </form>
+            <p id="goalMessage" style="display: none;"></p>
+        </div>
+
+        <div class="form-container">
+            <h2>Calculate Your Waste Reduction</h2>
+            <form id="wasteReductionForm">
+                <label for="waste">Monthly Waste Generated (kg):</label>
+                <input type="number" id="waste" required>
+
+                <button type="submit">Calculate Reduction</button>
+            </form>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Waste Reduction</h2>
+            <p id="resultText"></p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <!-- Impact of Recycling Section -->
+        <div class="impact-section">
+            <h2>Impact of Recycling</h2>
+            <p>Recycling helps conserve natural resources, saves energy, and reduces pollution. Join us in making a difference!</p>
+            <img src="recimpact.jpeg" alt="Impact of Recycling">
+        </div>
+
+        <!-- Tips for Recycling Section -->
+        <div class="tips-section">
+            <h2>Tips to Recycle Effectively</h2>
+            <p>Here are some easy steps you can take:</p>
+            <ul>
+                <li>Separate recyclables from trash.</li>
+                <li>Rinse containers before recycling.</li>
+                <li>Educate others about recycling.</li>
+                <li>Reduce single-use plastic items.</li>
+                <li>Participate in local recycling programs.</li>
+            </ul>
+        </div>
+
+        <!-- Actions to Promote Recycling Section -->
+        <div class="actions-section">
+            <h2>Take Action!</h2>
+            <p>Join initiatives that promote recycling:</p>
+            <ul>
+                <li>Participate in local clean-up events.</li>
+                <li>Volunteer for recycling awareness campaigns.</li>
+                <li>Support businesses that prioritize recycling.</li>
+                <li>Advocate for better recycling policies.</li>
+                <li>Organize recycling drives in your community.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goaluser.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Support Local Agriculture Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        let targetGoal = 0;
+
+        document.getElementById('goalForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            targetGoal = document.getElementById('goal').value;
+            document.getElementById('goalMessage').innerText = `Your target recycling amount is set to ${targetGoal} kg/month.`;
+            document.getElementById('goalMessage').style.display = 'block';
+        });
+
+        document.getElementById('wasteReductionForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user input
+            const waste = document.getElementById('waste').value; // Waste generated
+
+            // Prepare the result message
+            const message = `Your estimated waste generation is ${waste} kg per month.`;
+            document.getElementById('resultText').innerText = message;
+
+            // Compare with goal
+            if (targetGoal > 0) {
+                const progress = Math.min((waste / targetGoal) * 100, 100);
+                const progressBar = document.getElementById('progressBar');
+                progressBar.style.width = progress + '%';
+                progressBar.innerText = progress.toFixed(0) + '%'; // Show percentage on the bar
+
+                if (waste < targetGoal) {
+                    document.getElementById('resultText').innerText += ` Great job! You are below your target goal!`;
+                } else {
+                    document.getElementById('resultText').innerText += ` You need to increase your recycling by ${ (waste - targetGoal).toFixed(2) } kg to meet your goal.`;
+                }
+            }
+
+            document.getElementById('results').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
