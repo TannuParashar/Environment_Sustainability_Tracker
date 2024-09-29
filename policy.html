@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developing a Sustainability Policy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f5e9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2e7d32;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .action-steps {
+            margin-top: 20px;
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .goal-form {
+            background-color: #f1f8e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .goal-form input[type="text"],
+        .goal-form input[type="number"] {
+            padding: 8px;
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .goal-form button {
+            padding: 10px 15px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .goal-form button:hover {
+            background-color: #1b5e20;
+        }
+
+        .goals-section ul {
+            list-style-type: square;
+        }
+
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            background-color: #388e3c;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="sus.avif" alt="Logo">
+        <h1>Developing a Sustainability Policy</h1>
+        <p>Building a greener, sustainable future for our organization.</p>
+    </header>
+
+    <main>
+        <section class="policy-section">
+            <h2>Our Sustainability Vision</h2>
+            <p>
+                Sustainability is not just an organizational priority; it's a responsibility we hold toward the planet. We
+                believe in minimizing our environmental impact while contributing positively to the communities we operate
+                in.
+            </p>
+            <p>We are focused on reducing carbon emissions, improving energy efficiency, cutting down waste, and fostering sustainable growth.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>Developing a Sustainability Policy</h2>
+            <p>
+                A sustainability policy is the cornerstone of responsible business practices. It ensures that every
+                decision made aligns with our commitment to the environment. To create a well-rounded policy, we focus on
+                the following:
+            </p>
+            <div class="action-steps">
+                <div class="step">
+                    <h3>1. Assess the Environmental Impact</h3>
+                    <p>
+                        The first step is understanding our carbon footprint, energy usage, waste generation, and other
+                        factors that impact the environment. Regular assessments help us identify critical areas for
+                        improvement.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Set Clear Sustainability Goals</h3>
+                    <p>
+                        We believe in setting measurable goals, such as reducing carbon emissions, enhancing energy
+                        efficiency, and promoting renewable energy sources. These goals guide our sustainability efforts.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>3. Engage Employees and Stakeholders</h3>
+                    <p>
+                        Sustainability is a collective effort. We engage employees in eco-friendly practices and make
+                        sustainability an integral part of our corporate culture. Stakeholders are also kept in the loop to
+                        ensure transparency and accountability.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>4. Regular Review and Reporting</h3>
+                    <p>
+                        Sustainability is an ongoing journey. We regularly review our policies, measure progress, and make
+                        necessary adjustments. By staying adaptable, we aim to meet and exceed our sustainability
+                        commitments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="goals-section">
+            <h2>Set Your Sustainability Goals</h2>
+            <div class="goal-form">
+                <h3>Add New Sustainability Goal</h3>
+                <input type="text" id="goalName" placeholder="Goal Name (e.g., Carbon Neutrality)">
+                <input type="text" id="goalDescription" placeholder="Description (e.g., Achieve by 2030)">
+                <input type="number" id="goalYear" placeholder="Target Year">
+                <button onclick="addGoal()">Add Goal</button>
+            </div>
+
+            <h2>Our Sustainability Goals</h2>
+            <ul id="goalList">
+                <li><strong>Achieve Carbon Neutrality:</strong> By 2030, we aim to become a carbon-neutral organization.</li>
+                <li><strong>Reduce Waste:</strong> Cut overall waste production by 50% in five years.</li>
+                <li><strong>Improve Energy Efficiency:</strong> Upgrade all facilities for 30% energy reduction by 2025.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goalorg.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Sustainability Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        function addGoal() {
+            // Get input values
+            var goalName = document.getElementById("goalName").value;
+            var goalDescription = document.getElementById("goalDescription").value;
+            var goalYear = document.getElementById("goalYear").value;
+
+            // Validate inputs
+            if (goalName === "" || goalDescription === "" || goalYear === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Create a new list item for the goal
+            var newGoal = document.createElement("li");
+            newGoal.innerHTML = `<strong>${goalName}:</strong> ${goalDescription} (Target: ${goalYear})`;
+
+            // Append the new goal to the list
+            document.getElementById("goalList").appendChild(newGoal);
+
+            // Clear the input fields
+            document.getElementById("goalName").value = "";
+            document.getElementById("goalDescription").value = "";
+            document.getElementById("goalYear").value = "";
+        }
+    </script>
+
+</body>
+
+</html>
