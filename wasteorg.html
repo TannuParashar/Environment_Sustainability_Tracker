@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce Waste Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ff5722;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container,
+        .progress-container,
+        .results,
+        .importance-section,
+        .success-stories,
+        .tips-section {
+            color:#000000;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c41c00;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 30px;
+            width: 0%;
+            background-color: #f44336;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .importance-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tips-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #ff5722;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #ffe0b2;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            background-color: #c41c00;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="waste.jpg" alt="Logo">
+        <h1>Reduce Waste Generation Tracker</h1>
+        <p>Join us in our mission to reduce waste and create a sustainable future!</p>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Set Your Organization's Waste Reduction Goals</h2>
+            <form id="wasteReductionForm">
+                <label for="orgName">Organization Name:</label>
+                <input type="text" id="orgName" required>
+
+                <label for="goal">Target Waste Reduction (in kg):</label>
+                <input type="number" id="goal" min="1" required>
+
+                <label for="reduced">Waste Reduced (in kg):</label>
+                <input type="number" id="reduced" min="0" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="progress-container">
+            <h2>Your Organization's Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Organization's Impact</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <div class="importance-section">
+            <h2>Why Reducing Waste is Important</h2>
+            <p>Reducing waste generation is crucial for a sustainable environment. Benefits include:</p>
+            <ul>
+                <li>Minimizing landfill use and environmental impact.</li>
+                <li>Conserving natural resources.</li>
+                <li>Reducing greenhouse gas emissions.</li>
+                <li>Enhancing community health and well-being.</li>
+            </ul>
+            <img src="wastemgmt.jpg" alt="Sustainable Waste Management">
+        </div>
+
+        <div class="success-stories">
+            <h2>Success Stories</h2>
+            <p>Here are organizations that successfully reduced their waste:</p>
+            <ul>
+                <li><strong>Clean City Initiative</strong> - Achieved a 70% reduction in waste through community engagement and recycling programs.</li>
+                <li><strong>EcoFriendly Corp</strong> - Implemented a zero-waste policy and significantly reduced packaging waste.</li>
+                <li><strong>Green Spaces Foundation</strong> - Worked with local businesses to promote composting, leading to a 50% reduction in organic waste.</li>
+            </ul>
+        </div>
+
+        <div class="tips-section">
+            <h2>Tips for Reducing Waste</h2>
+            <p>Here are some strategies to help your organization reduce waste:</p>
+            <ul>
+                <li>Conduct a waste audit to identify reduction opportunities.</li>
+                <li>Implement recycling programs and educate staff.</li>
+                <li>Reduce single-use plastics and packaging.</li>
+                <li>Encourage digital documentation to minimize paper use.</li>
+                <li>Partner with local organizations for community clean-up initiatives.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="activityorg.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Reduce Waste Generation Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('wasteReductionForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const orgName = document.getElementById('orgName').value;
+            const goal = document.getElementById('goal').value; // Target waste reduction
+            const reduced = document.getElementById('reduced').value; // Waste reduced
+            const date = document.getElementById('date').value; // Date input
+
+            // Calculate progress and prepare the result message
+            let message = `${orgName}, you’ve reduced ${reduced} kg of waste as of ${date}. `;
+
+            // Check if organization met the goal and update progress bar
+            if (reduced >= goal) {
+                message += "Congratulations! You’ve achieved your waste reduction goal!";
+            } else {
+                const remaining = goal - reduced;
+                message += `You need to reduce ${remaining} kg more to reach your goal. Keep up the good work!`;
+            }
+
+            document.getElementById('resultText').innerText = message;
+            document.getElementById('results').style.display = 'block';
+
+            // Update progress bar (from 0% to 100%)
+            let progress = Math.min((reduced / goal) * 100, 100); // Capping at 100%
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').innerText = progress.toFixed(2) + '%'; // Display progress percentage
+        });
+    </script>
+</body>
+
+</html>

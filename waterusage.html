@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Usage Tracker</title>
+    <style>
+        /* Basic styling for layout and structure */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            text-align: center;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container, .progress-container, .results, .educational-content, .success-stories, .tips-section {
+            background-color: white;
+            color:black;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 30px;
+            width: 0%;
+            background-color: #4db6ac;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .educational-content, .success-stories, .tips-section {
+            text-align: left;
+        }
+
+        .educational-content img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tips-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #00796b;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #4db6ac;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #004d40; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="wlogo.jpg" alt="Logo">
+        <h1>Water Usage Tracker</h1>
+        <p>Monitor and reduce your water consumption!</p>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Set Your Water Usage Goal</h2>
+            <form id="waterUsageForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="goal">Your Water Reduction Goal (liters/week):</label>
+                <input type="number" id="goal" min="0" required>
+
+                <label for="usage">Water Usage (in liters/week):</label>
+                <input type="number" id="usage" min="0" required>
+
+                <label for="source">Primary Source of Water Consumption:</label>
+                <select id="source" required>
+                    <option value="shower">Shower</option>
+                    <option value="laundry">Laundry</option>
+                    <option value="drinking">Drinking Water</option>
+                    <option value="gardening">Gardening</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="progress-container">
+            <h2>Your Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Impact</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <!-- Educational Content Section -->
+        <div class="educational-content">
+            <h2>Why Reducing Water Usage is Important</h2>
+            <p>Water conservation is crucial for a sustainable future. By reducing water consumption, you help in:</p>
+            <ul>
+                <li>Preserving our natural water resources.</li>
+                <li>Reducing water bills.</li>
+                <li>Minimizing the strain on water treatment facilities.</li>
+                <li>Supporting a healthier ecosystem.</li>
+            </ul>
+            <img src="watercons.jpeg" alt="Water Conservation">
+        </div>
+
+        <!-- Success Stories Section -->
+        <div class="success-stories">
+            <h2>Success Stories</h2>
+            <p>Read about individuals and communities who successfully reduced their water consumption:</p>
+            <ul>
+                <li><strong>Emily Williams</strong> - Reduced her household's water use by 50% in 3 months!</li>
+                <li><strong>Michael Thompson</strong> - Achieved a 30% reduction in his water bill through smart usage.</li>
+                <li><strong>Green Village Initiative</strong> - A community-wide effort that saved over 100,000 liters of water in 6 months!</li>
+            </ul>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h2>Water Conservation Tips</h2>
+            <p>Here are some tips to reduce your water usage:</p>
+            <ul>
+                <li>Take shorter showers to save water.</li>
+                <li>Use a bucket instead of a hose for washing cars.</li>
+                <li>Water your garden early in the morning or late in the evening to reduce evaporation.</li>
+                <li>Fix any leaks in taps or pipes immediately.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goaluser.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Support Local Agriculture Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('waterUsageForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const name = document.getElementById('name').value;
+            const goal = document.getElementById('goal').value; // User's water reduction goal
+            const usage = document.getElementById('usage').value; // Weekly water usage
+            const date = document.getElementById('date').value; // Date input
+
+            // Calculate progress and prepare the result message
+            let message = `${name}, your weekly water usage is ${usage} liters as of ${date}. `;
+
+            // Check if user met the goal and update progress bar
+            if (usage <= goal) {
+                message += "Great job! You've achieved your water reduction goal.";
+            } else {
+                const difference = usage - goal;
+                message +=` You're exceeding your goal by ${difference} liters. Keep trying to reduce more.`;
+            }
+
+            document.getElementById('resultText').innerText = message;
+            document.getElementById('results').style.display = 'block';
+
+            // Update progress bar (from 0% to 100%)
+            let progress = Math.min((goal / usage) * 100, 100); // Capping at 100%
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').innerText = progress.toFixed(2) + '%'; // Display progress percentage
+        });
+    </script>
+</body>
+
+</html>
