@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            backdrop-filter: brightness(0%);
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .forgot-container {
+            border:1px solid rgb(241, 232, 232);
+            width : 400px;
+            height:auto;
+            padding: 5rem;
+            background-color: rgba(65, 62, 62, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(248, 248, 247, 0.829);
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 4px solid #797575;
+            border-radius: 30px;
+            padding: 20px;
+            margin: 15px 0;
+            box-sizing: border-box;
+            background: #7572724d;
+            border-color: transparent;
+            -webkit-text-fill-color: aliceblue;
+        }
+        button {
+            margin-top: 2rem;
+            padding: 0.5rem;
+            background-color: #124072;
+            color: white;
+            border: blue;
+            border-radius: 30px;
+            cursor: pointer;
+            padding: 20px;
+            margin: 15px;
+        }
+        button:hover {
+            background-color: #2f639b;
+        }
+        #rememberMe {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        label {
+            color: white;
+            margin-left: 0.5rem;
+        }
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 1rem;
+            background-color: #2c7ace;
+            color: rgb(248, 248, 248);
+            border-radius: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="forget.mp4" type="video/mp4">
+    </video>
+    <a href="login.html" class="back-btn">&#8592;</a>
+    <div class="forgot-container">
+        <center><h1>Forgot Password</h1></center>
+        <form id="forgotForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="newPassword" placeholder="New Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <div id="rememberMe">
+                <input type="checkbox" id="rememberMeCheckbox">
+                <label for="rememberMeCheckbox">Remember me</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('forgotForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Password validation
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!passwordPattern.test(newPassword)) {
+                alert("Password must be at least 8 characters long, contain uppercase, lowercase, number, and special character.");
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            alert('Password reset successfully!');
+        });
+    </script>
+</body>
+</html>
