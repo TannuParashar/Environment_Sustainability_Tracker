@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implement Sustainable Practices Initiative</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            text-align: center;
+        }
+
+        header {
+            background-color: #00897b;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container,
+        .progress-container,
+        .results,
+        .importance-section,
+        .success-stories,
+        .tips-section {
+            color:#000000;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 30px;
+            width: 0%;
+            background-color: #4db6ac;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .importance-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tips-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #00897b;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #b2dfdb;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #004d40; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="plantlogo.jpeg" alt="Logo">
+        <h1>Implement Sustainable Practices Tracker</h1>
+        <p>Set goals and make a positive impact on the environment by adopting sustainable practices!</p>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Set Your Organization's Sustainability Goal</h2>
+            <form id="sustainabilityGoalForm">
+                <label for="orgName">Organization Name:</label>
+                <input type="text" id="orgName" required>
+
+                <label for="goal">Your Sustainability Goal (number of practices):</label>
+                <input type="number" id="goal" min="1" required>
+
+                <label for="implemented">Sustainable Practices Your Organization Has Implemented:</label>
+                <input type="number" id="implemented" min="0" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="progress-container">
+            <h2>Your Organization's Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Organization's Impact</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <!-- Importance of Sustainable Practices Section -->
+        <div class="importance-section">
+            <h2>Why Implementing Sustainable Practices is Important</h2>
+            <p>Implementing sustainable practices is essential for preserving our environment and ensuring a better future. These practices help in:</p>
+            <ul>
+                <li>Reducing carbon footprints and combating climate change.</li>
+                <li>Conserving natural resources and protecting biodiversity.</li>
+                <li>Promoting healthier communities through clean air and water.</li>
+                <li>Encouraging responsible consumption and waste management.</li>
+            </ul>
+            <img src="plantingtrees.jpeg" alt="Sustainable Practices">
+        </div>
+
+        <!-- Success Stories Section -->
+        <div class="success-stories">
+            <h2>Success Stories</h2>
+            <p>Get inspired by individuals and organizations making a difference:</p>
+            <ul>
+                <li><strong>Eco Warriors</strong> - Implemented zero waste policies and reduced landfill waste by 80%.</li>
+                <li><strong>Sustainable City Initiative</strong> - Launched community solar programs, providing clean energy to thousands.</li>
+                <li><strong>Jane Doe</strong> - Started a composting program that diverted over 500 kg of food waste from landfills!</li>
+            </ul>
+        </div>
+
+        <!-- Sustainable Practices Tips Section -->
+        <div class="tips-section">
+            <h2>Sustainable Practices Tips</h2>
+            <p>Here are some tips for implementing sustainable practices:</p>
+            <ul>
+                <li>Reduce, reuse, and recycle whenever possible.</li>
+                <li>Use energy-efficient appliances and switch to renewable energy sources.</li>
+                <li>Minimize single-use plastics and opt for eco-friendly products.</li>
+                <li>Educate others about the importance of sustainability.</li>
+                <li>Participate in community clean-up and reforestation efforts.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goalorg.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Implement Sustainable Practices Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('sustainabilityGoalForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const orgName = document.getElementById('orgName').value;
+            const goal = document.getElementById('goal').value; // Organization's sustainability goal
+            const implemented = document.getElementById('implemented').value; // Practices implemented
+            const date = document.getElementById('date').value; // Date input
+
+            // Calculate progress and prepare the result message
+            let message = `${orgName}, you’ve implemented ${implemented} sustainable practices as of ${date}. `;
+
+            // Check if organization met the goal and update progress bar
+            if (implemented >= goal) {
+                message += "Congratulations! You’ve achieved your sustainability goal!";
+            } else {
+                const remaining = goal - implemented;
+                message += `You need to implement ${remaining} more sustainable practices to reach your goal. Keep going!`;
+            }
+
+            document.getElementById('resultText').innerText = message;
+            document.getElementById('results').style.display = 'block';
+
+            // Update progress bar (from 0% to 100%)
+            let progress = Math.min((implemented / goal) * 100, 100); // Capping at 100%
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').innerText = progress.toFixed(2) + '%'; // Display progress percentage
+        });
+    </script>
+</body>
+
+</html>

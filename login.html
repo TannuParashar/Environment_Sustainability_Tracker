@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            backdrop-filter: brightness(0%);
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .login-container {
+            border: 1px solid rgb(241, 232, 232);
+            width: 400px;
+            height: auto; /* Change to auto to fit content */
+            padding: 5rem;
+            background-color: rgba(65, 62, 62, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(248, 248, 247, 0.829);
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-container {
+            position: relative;
+        }
+        input, select {
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 4px solid #797575;
+            border-radius: 30px;  
+            padding: 20px;
+            margin: 15px 0; 
+            box-sizing: border-box; 
+            background: #7572724d;
+            border-color: transparent;
+            -webkit-text-fill-color: aliceblue;
+            transition: border-color 0.3s ease, background 0.3s ease; /* Smooth transition */
+        }
+        input:focus, select:focus {
+            outline: none; /* Remove default outline */
+            border-color: #007BFF; /* Border color on focus */
+            background: rgba(0, 0, 0, 0.5); /* Background color on focus */
+        }
+        input:focus, input:active, select:focus {
+            background: rgba(0, 0, 0, 0.8); /* Change background on focus */
+            color: rgb(222, 213, 213); /* Change text color on focus */
+        }
+        .show-password-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+        }
+        button {
+            margin-top: 2rem;
+            padding: 0.5rem;
+            background-color: #124072;
+            color: white;
+            border: blue;
+            border-radius: 30px;
+            cursor: pointer;
+            padding: 20px;
+            margin: 15px; 
+        }
+        button:hover {
+            background-color: #2f639b;
+        }
+        #forgetBtn {
+            background-color: #6e6866;
+        }
+        #forgetBtn:hover {
+            background-color: #82868a;
+        }
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 1rem;
+            background-color: #2c7ace;
+            color: rgb(248, 248, 248);
+            border-radius: 100px;
+            cursor: pointer;
+        }
+        #forg {
+            color: #007BFF; /* Initial text color */
+            text-decoration: none; /* Remove underline */
+            padding: 10px 15px; /* Add padding for better click area */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for background and text color */
+        }
+        #forg:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Dark background on hover */
+            color: white; /* Change text color to white */
+        }
+
+        /* Autofill style fix */
+        input:-webkit-autofill {
+            background-color: transparent !important;
+            -webkit-box-shadow: 0 0 0 30px rgba(65, 62, 62, 0.5) inset !important; /* Match your container's background */
+            -webkit-text-fill-color: aliceblue !important; /* Text color for autofill */
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0.5) inset !important; /* Background color on focus */
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="login.mp4" type="video/mp4">
+    </video>
+    <a href="signup.html" class="back-btn">&#8592;</a>
+    <div class="login-container">
+        <center><h1>Login</h1></center>
+        <form id="loginForm">
+            <div class="input-container">
+                <select id="userType" required>
+                    <option value="" disabled selected>Select User Type</option>
+                    <option value="individual">Individual</option>
+                    <option value="organization">Organization</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <svg class="show-password-icon" id="togglePassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5C6.7 4.5 2 12 2 12s4.7 7.5 10 7.5 10-7.5 10-7.5S17.3 4.5 12 4.5zm0 10.5a3 3 0 110-6 3 3 0 010 6z" fill="white"/><path d="M12 2C6.5 2 1 11.1 1 11.1S6.5 21 12 21c5.5 0 11-8.1 11-8.1S17.5 2 12 2zm0 15c-4.2 0-7.5-3.5-7.5-3.5S7.8 11 12 11s7.5 3.5 7.5 3.5S16.2 17 12 17z" fill="white" opacity=".5"/></svg>
+            </div>
+            <button type="submit">Login</button><br>
+            <center><h3><a href="forgot_pswd.html" id="forg">Forgot Password?</a></h3></center>
+        </form>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userType = document.getElementById('userType').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            alert(`Login submitted!\nUser Type: ${userType}\nUsername: ${username}`);
+
+        });
+
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
