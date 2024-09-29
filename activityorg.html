@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Activity Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f9f4;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #6dcf84, #4cb658);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        .activity-form, .activity-history {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin: 10px 0 5px;
+            display: block;
+        }
+
+        select, input[type="number"], button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4cb658;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        button:hover {
+            background-color: #3a9b46;
+        }
+
+        .result {
+            margin-top: 40px;
+        }
+
+        .tips {
+            margin-top: 10px;
+            font-style: italic;
+            color: #4cb658;
+        }
+
+        .activity-log {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .activity-log p {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-button {
+            background-color: #f44336; /* Red color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8em;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .delete-button:hover {
+            background-color: #c62828;
+        }
+
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #2e7d32; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Track Your Environmental Impact</h1>
+        <p>Fill in your activity details!</p>
+    </header>
+
+    <main>
+        <div class="activity-form">
+            <label for="activity">Select Activity:</label>
+            <select id="activity">
+                <option value="">--Select an Activity--</option>
+                <option value="excess-water">Excess Water Usage</option>
+                <option value="single-use-plastic">Single-Use Plastic</option>
+                <option value="high-fuel">High Fuel Consumption</option>
+                <option value="deforestation">Deforestation</option>
+                <option value="air-pollution">Air Pollution from Factories</option>
+                <option value="water-pollution">Water Pollution from Waste Disposal</option>
+                <option value="soil-contamination">Soil Contamination</option>
+                <option value="deforestation-industrial">Deforestation for Industrial Expansion</option>
+                <option value="energy-consumption">Excessive Energy Consumption</option>
+                <option value="plastic-production">Plastic Production</option>
+                <option value="mining-activities">Mining Activities</option>
+                <option value="waste-generation">Waste Generation</option>
+                <option value="overfishing">Overfishing</option>
+                <option value="land-degradation">Land Degradation</option>
+                <option value="transport-carbon-emissions">Carbon Emissions from Transportation</option>
+                <option value="chemical-runoff">Chemical Runoff</option>
+                <option value="noise-pollution">Noise Pollution</option>
+                <option value="non-renewable-resources">Use of Non-Renewable Resources</option>
+                <option value="natural-habitat-destruction">Destruction of Natural Habitats</option>
+            </select>
+
+            <label for="quantity">Enter Quantity Used:</label>
+            <input type="number" id="quantity" placeholder="Enter amount used (e.g., liters, kg)">
+
+            <button id="trackActivity">Track Activity</button>
+
+            <div class="result" id="result"></div>
+            <div class="tips" id="tips"></div>
+        </div>
+
+        <div class="activity-history">
+            <h2>Your Activity History</h2>
+            <div class="activity-log" id="activityLog"></div>
+        </div>
+
+        <footer class="footer">
+            <div class="nav-links">
+                <a href="front.html">Previous Page</a>
+                <a href="goalorg.html">Next Page</a>
+            </div>
+            <p><center>&copy; 2024 Your Environmental Commitment. All Rights Reserved.</center></p>
+        </footer>
+    </main>
+
+    <script>
+        // Initialize activity log
+        const activityLog = [];
+
+        // Tips for each activity
+        const tips = {
+            'excess-water': 'Tip: Consider taking shorter showers and fixing leaks.',
+            'single-use-plastic': 'Tip: Try using reusable bags and bottles.',
+            'high-fuel': 'Tip: Carpool or use public transportation to reduce fuel consumption.',
+            'deforestation': 'Tip: Support reforestation initiatives in your community.',
+            'air-pollution': 'Tip: Advocate for better waste management regulations in your area.',
+            'water-pollution': 'Tip: Promote better waste disposal practices in your area.',
+            'soil-contamination': 'Tip: Consider organic farming methods that reduce chemical use.',
+            'deforestation-industrial': 'Tip: Promote sustainable land-use practices.',
+            'energy-consumption': 'Tip: Switch to energy-efficient appliances and practices at home.',
+            'plastic-production': 'Tip: Choose products with minimal packaging and opt for alternatives to plastic.',
+            'mining-activities': 'Tip: Support sustainable mining practices and regulations.',
+            'waste-generation': 'Tip: Practice recycling and reduce single-use items in your daily life.',
+            'overfishing': 'Tip: Buy seafood from sustainable sources and support fishery management.',
+            'land-degradation': 'Tip: Encourage sustainable agricultural practices that preserve soil health.',
+            'transport-carbon-emissions': 'Tip: Opt for electric vehicles or public transport when possible.',
+            'chemical-runoff': 'Tip: Support regulations on chemical use in industries.',
+            'noise-pollution': 'Tip: Advocate for quieter machinery and practices in your area.',
+            'non-renewable-resources': 'Tip: Support renewable energy initiatives.',
+            'natural-habitat-destruction': 'Tip: Encourage conservation efforts to protect local ecosystems.'
+        };
+
+        document.getElementById('trackActivity').addEventListener('click', function() {
+            const activity = document.getElementById('activity').value;
+            const quantity = document.getElementById('quantity').value;
+            const resultDiv = document.getElementById('result');
+            const tipsDiv = document.getElementById('tips');
+            const activityLogDiv = document.getElementById('activityLog');
+
+            if (activity && quantity) {
+                let impactMessage = '';
+                switch (activity) {
+                    case 'excess-water':
+                        impactMessage = `You used ${quantity} liters of water!`;
+                        break;
+                    case 'single-use-plastic':
+                        impactMessage = `You used ${quantity} kg of plastic!`;
+                        break;
+                    case 'high-fuel':
+                        impactMessage = `You have consumed ${quantity} liters of fuel!`;
+                        break;
+                    case 'deforestation':
+                        impactMessage = `You contributed to the deforestation of ${quantity} square meters!`;
+                        break;
+                    case 'air-pollution':
+                        impactMessage = `Your activities contributed to air pollution!`;
+                        break;
+                    case 'water-pollution':
+                        impactMessage = `Your activities contributed to water pollution!`;
+                        break;
+                    case 'soil-contamination':
+                        impactMessage = `You caused soil contamination with ${quantity} kg of chemicals!`;
+                        break;
+                    case 'deforestation-industrial':
+                        impactMessage = `You contributed to deforestation for industrial purposes!`;
+                        break;
+                    case 'energy-consumption':
+                        impactMessage = `You consumed ${quantity} kWh of energy!`;
+                        break;
+                    case 'plastic-production':
+                        impactMessage = `You produced ${quantity} kg of plastic!`;
+                        break;
+                    case 'mining-activities':
+                        impactMessage = `You engaged in mining activities affecting the environment!`;
+                        break;
+                    case 'waste-generation':
+                        impactMessage = `You generated ${quantity} kg of waste!`;
+                        break;
+                    case 'overfishing':
+                        impactMessage = `You overfished ${quantity} kg of seafood!`;
+                        break;
+                    case 'land-degradation':
+                        impactMessage = `You contributed to land degradation over ${quantity} square meters!`;
+                        break;
+                    case 'transport-carbon-emissions':
+                        impactMessage = `Your transportation caused carbon emissions!`;
+                        break;
+                    case 'chemical-runoff':
+                        impactMessage = `You caused chemical runoff into water bodies!`;
+                        break;
+                    case 'noise-pollution':
+                        impactMessage = `You contributed to noise pollution!`;
+                        break;
+                    case 'non-renewable-resources':
+                        impactMessage = `You used non-renewable resources!`;
+                        break;
+                    case 'natural-habitat-destruction':
+                        impactMessage = `You contributed to the destruction of natural habitats!`;
+                        break;
+                    default:
+                        impactMessage = 'Activity not recognized.';
+                }
+
+                // Display the impact message
+                resultDiv.innerHTML = impactMessage;
+
+                // Display tips
+                tipsDiv.innerHTML = tips[activity];
+
+                // Log activity
+                const logEntry = `${impactMessage}  : ${new Date().toLocaleString()}`;
+                activityLog.push(logEntry);
+                updateActivityLog(activityLogDiv);
+
+                // Clear the form
+                document.getElementById('activity').value = '';
+                document.getElementById('quantity').value = '';
+            } else {
+                alert('Please select an activity and enter the quantity.');
+            }
+        });
+
+        function updateActivityLog(logDiv) {
+            logDiv.innerHTML = ''; // Clear previous logs
+            activityLog.forEach((log, index) => {
+                const logEntry = document.createElement('p');
+                logEntry.innerHTML = `${log} <button class="delete-button" onclick="deleteLog(${index})">Delete</button>`;
+                logDiv.appendChild(logEntry);
+            });
+        }
+
+        function deleteLog(index) {
+            activityLog.splice(index, 1); // Remove the log at the specified index
+            updateActivityLog(document.getElementById('activityLog')); // Update the displayed log
+        }
+    </script>
+</body>
+</html>

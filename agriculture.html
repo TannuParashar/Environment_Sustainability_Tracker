@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Local Agriculture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f8e9;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container,
+        .benefits-section,
+        .support-section,
+        .community-section,
+        .goal-section {
+            color:black;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #388e3c;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .benefits-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .support-section ul,
+        .community-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #2e7d32; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="logoag.jpg" alt="Logo">
+        <h1>Support Local Agriculture</h1>
+        <p>Grow Together, Sustain Together!</p>
+    </header>
+
+    <main>
+        <!-- Goal Setting Section -->
+        <div class="goal-section">
+            <h2>Your Goal to Support Local Agriculture</h2>
+            <form id="goalForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="goal">Your Target Number of Local Farmers to Support:</label>
+                <input type="number" id="goal" required>
+
+                <button type="submit">Set Goal</button>
+            </form>
+            <p id="goalMessage" style="display: none;"></p>
+        </div>
+
+        <!-- Benefits of Local Agriculture Section -->
+        <div class="benefits-section">
+            <h2>Benefits of Supporting Local Agriculture</h2>
+            <p>Supporting local agriculture contributes to the community and the environment.</p>
+            <img src="agbenefits.jpg" alt="Benefits of Local Agriculture">
+            <ul>
+                <li>Fresher produce with better taste.</li>
+                <li>Boosts local economies.</li>
+                <li>Reduces carbon footprint.</li>
+                <li>Supports biodiversity.</li>
+                <li>Strengthens community bonds.</li>
+            </ul>
+        </div>
+
+        <!-- How to Support Local Agriculture Section -->
+        <div class="support-section">
+            <h2>Ways to Support Local Agriculture</h2>
+            <p>Here are some effective ways to contribute:</p>
+            <ul>
+                <li>Shop at local farmers' markets.</li>
+                <li>Join a community-supported agriculture (CSA) program.</li>
+                <li>Promote local farmers on social media.</li>
+                <li>Volunteer for local farms.</li>
+                <li>Advocate for local food policies.</li>
+            </ul>
+        </div>
+
+        <!-- Community Involvement Section -->
+        <div class="community-section">
+            <h2>Get Involved with Your Community</h2>
+            <p>Engage with your local community to make a difference:</p>
+            <ul>
+                <li>Attend local agriculture events and workshops.</li>
+                <li>Join local agricultural organizations.</li>
+                <li>Organize community garden projects.</li>
+                <li>Participate in local food drives.</li>
+                <li>Educate others about the importance of local agriculture.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goaluser.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Support Local Agriculture Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('goalForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            const name = document.getElementById('name').value;
+            const goal = document.getElementById('goal').value;
+            document.getElementById('goalMessage').innerText = `${name}, your target number of local farmers to support is set to ${goal}.`;
+            document.getElementById('goalMessage').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
