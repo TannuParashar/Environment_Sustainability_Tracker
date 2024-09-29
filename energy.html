@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce Energy Consumption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4c3;
+            text-align: center;
+        }
+
+        header {
+            background-color: #8bc34a;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .goal-section, .form-container, .results, .tips-section, .actions-section {
+            color:black;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #66bb6a;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #57a05c;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #8bc34a;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #2e7d32; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="elogo.avif" alt="Logo">
+        <h1>Reduce Energy Consumption</h1>
+        <p>Take steps towards a sustainable future!</p>
+    </header>
+
+    <main>
+        <!-- Goal Setting Section -->
+        <div class="goal-section">
+            <h2>Set Your Energy Consumption Goal</h2>
+            <form id="goalForm">
+                <label for="goal">Your Target Energy Consumption (kWh/month):</label>
+                <input type="number" id="goal" required>
+                <button type="submit">Set Goal</button>
+            </form>
+            <p id="goalMessage" style="display: none;"></p>
+        </div>
+
+        <div class="form-container">
+            <h2>Calculate Your Energy Consumption</h2>
+            <form id="energyConsumptionForm">
+                <label for="lighting">Monthly Lighting Usage (kWh):</label>
+                <input type="number" id="lighting" required>
+
+                <label for="heating">Monthly Heating Usage (kWh):</label>
+                <input type="number" id="heating" required>
+
+                <label for="appliances">Monthly Appliances Usage (kWh):</label>
+                <input type="number" id="appliances" required>
+
+                <button type="submit">Calculate Consumption</button>
+            </form>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Energy Consumption</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <!-- Tips for Reducing Energy Consumption Section -->
+        <div class="tips-section">
+            <h2>Tips to Reduce Your Energy Consumption</h2>
+            <p>Here are some easy steps you can take:</p>
+            <ul>
+                <li>Use LED bulbs instead of incandescent ones.</li>
+                <li>Unplug appliances when not in use.</li>
+                <li>Optimize heating and cooling systems.</li>
+                <li>Use energy-efficient appliances.</li>
+                <li>Insulate your home properly to reduce heating costs.</li>
+            </ul>
+        </div>
+
+        <!-- Actions to Reduce Energy Consumption Section -->
+        <div class="actions-section">
+            <h2>Take Action!</h2>
+            <p>Join community initiatives to save energy:</p>
+            <ul>
+                <li>Participate in energy conservation programs.</li>
+                <li>Volunteer for local clean energy initiatives.</li>
+                <li>Promote awareness of energy-saving practices.</li>
+                <li>Advocate for renewable energy sources.</li>
+                <li>Support businesses that prioritize energy efficiency.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goaluser.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Support Local Agriculture Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        let targetGoal = 0;
+
+        document.getElementById('goalForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            targetGoal = document.getElementById('goal').value;
+            document.getElementById('goalMessage').innerText = `Your target energy consumption is set to ${targetGoal} kWh/month.`;
+            document.getElementById('goalMessage').style.display = 'block';
+        });
+
+        document.getElementById('energyConsumptionForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const lighting = document.getElementById('lighting').value; // Lighting usage
+            const heating = document.getElementById('heating').value; // Heating usage
+            const appliances = document.getElementById('appliances').value; // Appliances usage
+
+            // Calculate the total energy consumption
+            const totalConsumption = parseFloat(lighting) + parseFloat(heating) + parseFloat(appliances);
+
+            // Prepare the result message
+            const message = `Your estimated total energy consumption is ${totalConsumption.toFixed(2)} kWh per month.`;
+            document.getElementById('resultText').innerText = message;
+
+            // Compare with goal
+            if (targetGoal > 0) {
+                if (totalConsumption < targetGoal) {
+                    document.getElementById('resultText').innerText += ` Great job! You are below your target goal!`;
+                } else {
+                    document.getElementById('resultText').innerText += ` You need to reduce your energy consumption by ${ (totalConsumption - targetGoal).toFixed(2) } kWh to meet your goal.`;
+                }
+            }
+
+            document.getElementById('results').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
