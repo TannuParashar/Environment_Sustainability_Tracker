@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant a Tree Initiative</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8e0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container, .progress-container, .results, .importance-section, .success-stories, .tips-section {
+            background-color: white;
+            color:black;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #388e3c;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 30px;
+            width: 0%;
+            background-color: #66bb6a;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .importance-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tips-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #b8f1c9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #2e7d32; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="plantlogo.jpeg" alt="Logo">
+        <h1>Plant a Tree Goal Tracker</h1>
+        <p>Set goals and make a positive impact on the environment by planting trees!</p>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Set Your Tree Planting Goal</h2>
+            <form id="treeGoalForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="goal">Your Tree Planting Goal (number of trees):</label>
+                <input type="number" id="goal" min="1" required>
+
+                <label for="planted">Trees You’ve Planted:</label>
+                <input type="number" id="planted" min="0" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="progress-container">
+            <h2>Your Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Impact</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <!-- Importance of Tree Planting Section -->
+        <div class="importance-section">
+            <h2>Why Planting Trees is Important</h2>
+            <p>Planting trees is vital to maintaining the balance of the ecosystem. Trees provide oxygen, improve air quality, conserve water, and support wildlife. By planting more trees, you contribute to:</p>
+            <ul>
+                <li>Combating climate change by absorbing carbon dioxide.</li>
+                <li>Improving air quality and reducing pollution.</li>
+                <li>Creating habitats for wildlife.</li>
+                <li>Preventing soil erosion and preserving water resources.</li>
+            </ul>
+            <img src="plantingtrees.jpeg" alt="Planting Trees">
+        </div>
+
+        <!-- Success Stories Section -->
+        <div class="success-stories">
+            <h2>Success Stories</h2>
+            <p>Get inspired by individuals and organizations making a difference:</p>
+            <ul>
+                <li><strong>John Green</strong> - Planted 100 trees in his community park in 6 months.</li>
+                <li><strong>The Green Earth Initiative</strong> - Reforested over 500 hectares of land with local volunteers.</li>
+                <li><strong>Susan Martinez</strong> - Turned her backyard into a mini-forest, planting 50 trees and shrubs!</li>
+            </ul>
+        </div>
+
+        <!-- Tree Planting Tips Section -->
+        <div class="tips-section">
+            <h2>Tree Planting Tips</h2>
+            <p>Here are some tips for planting and caring for trees:</p>
+            <ul>
+                <li>Choose native species to support the local ecosystem.</li>
+                <li>Plant trees in early spring or fall for the best results.</li>
+                <li>Water regularly, especially during the first year after planting.</li>
+                <li>Mulch around the base to retain moisture and prevent weeds.</li>
+                <li>Avoid planting too close to buildings or power lines.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goaluser.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Support Local Agriculture Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('treeGoalForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const name = document.getElementById('name').value;
+            const goal = document.getElementById('goal').value; // User's tree planting goal
+            const planted = document.getElementById('planted').value; // Trees planted
+            const date = document.getElementById('date').value; // Date input
+
+            // Calculate progress and prepare the result message
+            let message = `${name}, you’ve planted ${planted} trees as of ${date}. `;
+
+            // Check if user met the goal and update progress bar
+            if (planted >= goal) {
+                message += "Congratulations! You’ve achieved your tree planting goal!";
+            } else {
+                const remaining = goal - planted;
+                message += `You need to plant ${remaining} more trees to reach your goal. Keep going!`;
+            }
+
+            document.getElementById('resultText').innerText = message;
+            document.getElementById('results').style.display = 'block';
+
+            // Update progress bar (from 0% to 100%)
+            let progress = Math.min((planted / goal) * 100, 100); // Capping at 100%
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').innerText = progress.toFixed(2) + '%'; // Display progress percentage
+        });
+    </script>
+</body>
+
+</html>
