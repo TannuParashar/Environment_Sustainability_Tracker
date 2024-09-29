@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improve Energy Efficiency</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container,
+        .progress-container,
+        .results,
+        .importance-section,
+        .success-stories,
+        .tips-section {
+            color:black;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388E3C;
+        }
+
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 30px;
+            width: 0%;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .importance-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .tips-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            background-color: #388E3C;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="elogo.avif" alt="Logo">
+        <h1>Energy Efficiency Improvement Tracker</h1>
+        <p>Join us in our mission to enhance energy efficiency for a sustainable future!</p>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Set Your Organization's Energy Efficiency Goals</h2>
+            <form id="energyEfficiencyForm">
+                <label for="orgName">Organization Name:</label>
+                <input type="text" id="orgName" required>
+
+                <label for="goal">Target Energy Efficiency Improvement (in %):</label>
+                <input type="number" id="goal" min="1" required>
+
+                <label for="improved">Energy Efficiency Improved (in %):</label>
+                <input type="number" id="improved" min="0" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="progress-container">
+            <h2>Your Organization's Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar">0%</div>
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h2>Your Organization's Impact</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <div class="importance-section">
+            <h2>Why Improving Energy Efficiency is Important</h2>
+            <p>Enhancing energy efficiency is essential for sustainable development. Benefits include:</p>
+            <ul>
+                <li>Reducing energy consumption and costs.</li>
+                <li>Minimizing greenhouse gas emissions.</li>
+                <li>Conserving natural resources.</li>
+                <li>Improving overall operational efficiency.</li>
+            </ul>
+            <img src="energyeff.jpeg" alt="Energy Efficiency">
+        </div>
+
+        <div class="success-stories">
+            <h2>Success Stories</h2>
+            <p>Here are organizations that successfully improved their energy efficiency:</p>
+            <ul>
+                <li><strong>Green Energy Solutions</strong> - Reduced energy consumption by 30% through building upgrades and smart technologies.</li>
+                <li><strong>Sustainable Manufacturing Inc.</strong> - Achieved 40% energy efficiency improvement by optimizing processes and equipment.</li>
+                <li><strong>EcoSavvy Enterprises</strong> - Implemented renewable energy sources, resulting in a 50% reduction in energy costs.</li>
+            </ul>
+        </div>
+
+        <div class="tips-section">
+            <h2>Tips for Improving Energy Efficiency</h2>
+            <p>Here are some strategies to help your organization improve energy efficiency:</p>
+            <ul>
+                <li>Conduct energy audits to identify areas for improvement.</li>
+                <li>Upgrade to energy-efficient lighting and appliances.</li>
+                <li>Implement a smart energy management system.</li>
+                <li>Encourage employee engagement in energy-saving initiatives.</li>
+                <li>Invest in renewable energy sources where possible.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goalorg.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Energy Efficiency Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('energyEfficiencyForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const orgName = document.getElementById('orgName').value;
+            const goal = document.getElementById('goal').value; // Target energy efficiency improvement
+            const improved = document.getElementById('improved').value; // Energy efficiency improved
+            const date = document.getElementById('date').value; // Date input
+
+            // Calculate progress and prepare the result message
+            let message = `${orgName}, you’ve improved your energy efficiency by ${improved}% as of ${date}. `;
+
+            // Check if organization met the goal and update progress bar
+            if (improved >= goal) {
+                message += "Congratulations! You’ve achieved your energy efficiency improvement goal!";
+            } else {
+                const remaining = goal - improved;
+                message +=` You need to improve your efficiency by ${remaining}% more to reach your goal. Keep up the good work!`;
+            }
+
+            document.getElementById('resultText').innerText = message;
+            document.getElementById('results').style.display = 'block';
+
+            // Update progress bar (from 0% to 100%)
+            let progress = Math.min((improved / goal) * 100, 100); // Capping at 100%
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').innerText = progress.toFixed(2) + '%'; // Display progress percentage
+        });
+    </script>
+</body>
+
+</html>

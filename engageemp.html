@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engage Employees in Sustainability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4c3;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .form-container,
+        .progress-container,
+        .importance-section,
+        .initiatives-section,
+        .resources-section,
+        .success-stories {
+            color:black;
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .importance-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            background-color: #388e3c;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="sus.avif" alt="Logo">
+        <h1>Employee Engagement in Sustainability</h1>
+        <p>Join us in making our workplace more sustainable!</p>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Share Your Sustainability Ideas</h2>
+            <form id="sustainabilityForm">
+                <label for="employeeName">Your Name:</label>
+                <input type="text" id="employeeName" required>
+
+                <label for="idea">Sustainability Idea:</label>
+                <textarea id="idea" rows="4" required></textarea>
+
+                <label for="impact">Expected Impact:</label>
+                <textarea id="impact" rows="2" required></textarea>
+
+                <button type="submit">Submit Idea</button>
+            </form>
+        </div>
+
+        <div class="initiatives-section">
+            <h2>Current Sustainability Initiatives</h2>
+            <p>We are proud to implement the following sustainability initiatives:</p>
+            <ul>
+                <li>Recycling programs for paper and plastics.</li>
+                <li>Energy-efficient lighting installations.</li>
+                <li>Composting food waste in the cafeteria.</li>
+                <li>Tree planting events each quarter.</li>
+            </ul>
+        </div>
+
+        <div class="importance-section">
+            <h2>Why Engage in Sustainability?</h2>
+            <p>Engaging in sustainability efforts is essential for:</p>
+            <ul>
+                <li>Reducing our carbon footprint.</li>
+                <li>Creating a healthier workplace environment.</li>
+                <li>Building a positive brand image.</li>
+                <li>Encouraging teamwork and collaboration.</li>
+            </ul>
+            <img src="imp.png" alt="Sustainability Importance">
+        </div>
+
+        <div class="success-stories">
+            <h2>Success Stories</h2>
+            <p>Check out how some of our employees have made a difference:</p>
+            <ul>
+                <li><strong>John Doe</strong>: Implemented a recycling program that increased recycling rates by 40%!</li>
+                <li><strong>Jane Smith</strong>: Organized a carpooling initiative that reduced parking congestion and carbon emissions.</li>
+                <li><strong>Emily Johnson</strong>: Led a campaign to switch to biodegradable office supplies, minimizing plastic waste.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="nav-links">
+            <a href="goalorg.html">Previous Page</a>
+            <a href="feedback.html">Next Page</a>
+        </div>
+        <p><center>&copy; 2024 Sustainability Initiative | <a href="privacy.html">Privacy Policy</a> | <a href="contactus.html">Contact Us</a></center></p>
+    </footer>
+
+    <script>
+        document.getElementById('sustainabilityForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve user inputs
+            const employeeName = document.getElementById('employeeName').value;
+            const idea = document.getElementById('idea').value;
+            const impact = document.getElementById('impact').value;
+
+            // Display confirmation message
+            alert(`Thank you, ${employeeName}! Your sustainability idea has been submitted:\n\n" ${idea}"\nExpected Impact: ${impact}`);
+            // Clear the form fields
+            document.getElementById('sustainabilityForm').reset();
+        });
+    </script>
+</body>
+
+</html>
