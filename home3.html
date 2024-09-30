@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTracker</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC, #C9FFBF, #FFAFBD); /* Soft gradient with color blend */
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header h1 {
+            padding: 20px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 150px);
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            width: 100%; /* Ensure full width */
+            
+        }
+
+        .menu-item-container {
+            
+            font-size: 2rem;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between the items */
+            color: rgb(98, 96, 218);
+            width: 100%; /* Ensure full width */
+            border-top: 2px dashed rgb(99, 108, 235); /* Top border */
+            border-bottom: 2px dashed rgb(99, 108, 235); /* Bottom border */
+        }
+
+        .menu-item {
+            text-decoration: none;
+            color: rgb(98, 96, 218);
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            left: 0;
+            top: 100%; /* Directly below the parent */
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Dropdown item style */
+        .dropdown-content a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            border-top: 1px solid rgb(0, 0, 0);
+            border-bottom: 1px solid rgb(0, 0, 0);
+            transition: 0.3s;
+        }
+
+        /* Hover effect for dropdown items */
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 30px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EcoTracker</h1>
+    </header>
+
+    <section class="main-content">
+        <div class="menu">
+            <!-- Activities on one line with slash -->
+            <div class="menu-item-container">
+                <a href="activityuser.html" class="menu-item">Individual Activities</a>
+                <span>/</span>
+                <a href="activityorg.html" class="menu-item">Organization Activities</a>
+            </div>
+            
+            <!-- Goals with dropdown -->
+            <div class="menu-item-container">
+                <a href="goaluser.html" class="menu-item">Individual Goals</a>
+                <span>/</span>
+                <a href="goalorg.html" class="menu-item">Organization Goals</a>
+            </div>
+            
+            <!-- Other menu items -->
+            <div class="menu-item-container">
+                <a href="feedback.html" class="menu-item">Feedback</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="privacy.html">Privacy</a> | 
+        <a href="contactus.html">Contact Us</a>  
+    </footer>
+
+    <script>
+        // Add event listeners to all elements with data-toggle attribute
+        document.querySelectorAll('[data-toggle="dropdown"]').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default anchor behavior
+                
+                // Toggle the dropdown visibility
+                const dropdown = this.querySelector('.dropdown-content');
+                if (dropdown.style.display === 'flex') {
+                    dropdown.style.display = 'none'; // Hide if already visible
+                } else {
+                    // Hide other dropdowns first
+                    document.querySelectorAll('.dropdown-content').forEach(dd => {
+                        dd.style.display = 'none';
+                    });
+                    dropdown.style.display = 'flex'; // Show clicked dropdown
+                }
+            });
+        });
+
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!event.target.closest('[data-toggle="dropdown"]')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

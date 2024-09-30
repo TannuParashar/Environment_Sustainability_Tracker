@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cac8c8; /* White background */
+            overflow: hidden; /* Prevents scrolling */
+            position: relative; /* Allow positioning of text */
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC, #C9FFBF, #FFAFBD); /* Soft gradient with color blend */
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            width: 100vw; /* Full width */
+            height: 100vh; /* Full height */
+        }
+
+        .earth {
+            position: absolute;
+            left: 50%; /* Center the earth */
+            top: 50%; /* Center the earth vertically */
+            width: 100%; /* Full viewport width */
+            height: 100%; /* Full viewport height */
+            background: url('earth.jpeg') no-repeat center center; /* Earth image */
+            background-size: contain; /* Adjust to make sure the whole image fits */
+            transform: translate(-50%, -50%); /* Center it */
+            animation: rotate 50s linear infinite; /* Continuous rotation */
+            border-radius: 50%;
+        }
+
+        .text {
+            margin-top: 200px;
+            font-size: 1.5rem;
+            color: white;
+            position: absolute;
+            top: 20%; /* Position it above the center */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center it horizontally */
+            text-align: center; /* Center the text */
+            font-family: Arial, sans-serif; /* Font family */
+            z-index: 1; /* Ensure it appears above the earth */
+        }
+
+        h1{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        h2{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg); /* Start rotation */
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg); /* Complete rotation */
+            }
+        }
+        a{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 30px;
+            color: white;
+            text-decoration: none;
+        }
+        a:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="earth" id="earth"></div> <!-- Full Earth background -->
+        <div class="text">
+            <h1>Environmental<br> Sustainability Tracker</h1>
+            <h2><br><a href="home3.html">Explore Now</a></h2>
+        </div>
+    </div>
+
+    <script>
+        const earth = document.getElementById('earth');
+        earth.addEventListener('animationend', () => {
+            // window.location.href = 'home3.html'; // Uncomment this line to redirect to the new page
+        });
+    </script>
+</body>
+</html>

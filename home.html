@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000; /* Light gray background */
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .circle {
+            width: 400px; /* Circle diameter */
+            height: 400px; /* Circle diameter */
+            border-radius: 50%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: expand 10s forwards;
+        }
+
+        .circle span {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            color: #ffffff; /* Text color */
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 5s forwards 3s; /* Fade in after circle expands */
+        }
+
+        @keyframes expand {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle" id="circle">
+            <span>EcoTracker</span>
+        </div>
+    </div>
+
+    <script>
+        const circle = document.getElementById('circle');
+        circle.addEventListener('animationend', () => {
+            window.location.href = 'home2.html'; // Redirect to new page
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
