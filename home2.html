@@ -16,12 +16,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #cac8c8; /* White background */
-            overflow: hidden; /* Prevents scrolling */
-            position: relative; /* Allow positioning of text */
             background: linear-gradient(135deg, #FFDEE9, #B5FFFC, #C9FFBF, #FFAFBD); /* Soft gradient with color blend */
             background-size: 400% 400%;
             animation: gradientShift 10s ease infinite;
+            transition: opacity 1s ease; /* Transition for fading out */
         }
 
         @keyframes gradientShift {
@@ -32,76 +30,73 @@
 
         .container {
             position: relative;
-            width: 100vw; /* Full width */
-            height: 100vh; /* Full height */
         }
 
-        .earth {
-            position: absolute;
-            left: 50%; /* Center the earth */
-            top: 50%; /* Center the earth vertically */
-            width: 100%; /* Full viewport width */
-            height: 100%; /* Full viewport height */
-            background: url('earth.jpeg') no-repeat center center; /* Earth image */
-            background-size: contain; /* Adjust to make sure the whole image fits */
-            transform: translate(-50%, -50%); /* Center it */
-            animation: rotate 50s linear infinite; /* Continuous rotation */
+        .circle {
+            width: 400px; /* Circle diameter */
+            height: 400px; /* Circle diameter */
             border-radius: 50%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: expand 10s forwards;
         }
 
-        .text {
-            margin-top: 200px;
-            font-size: 1.5rem;
-            color: white;
-            position: absolute;
-            top: 20%; /* Position it above the center */
-            left: 50%;
-            transform: translate(-50%, -50%); /* Center it horizontally */
-            text-align: center; /* Center the text */
-            font-family: Arial, sans-serif; /* Font family */
-            z-index: 1; /* Ensure it appears above the earth */
-        }
-
-        h1{
+        .circle span {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            color: blue;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 5s forwards 3s; /* Fade in after circle expands */
         }
 
-        h2{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        @keyframes rotate {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg); /* Start rotation */
+        @keyframes expand {
+            0% {
+                transform: scale(0);
             }
-            to {
-                transform: translate(-50%, -50%) rotate(360deg); /* Complete rotation */
+            100% {
+                transform: scale(1);
             }
         }
-        a{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 30px;
-            color: white;
-            text-decoration: none;
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
-        a:hover{
-            cursor: pointer;
-            text-decoration: underline;
+
+        /* Fade-out effect */
+        .fade-out {
+            opacity: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="earth" id="earth"></div> <!-- Full Earth background -->
-        <div class="text">
-            <h1>Environmental<br> Sustainability Tracker</h1>
-            <h2><br><a href="home3.html">Explore Now</a></h2>
+        <div class="circle" id="circle">
+            <span>EcoTracker</span>
         </div>
     </div>
 
     <script>
-        const earth = document.getElementById('earth');
-        earth.addEventListener('animationend', () => {
-            // window.location.href = 'home3.html'; // Uncomment this line to redirect to the new page
+        const circle = document.getElementById('circle');
+        const body = document.body;
+
+        circle.addEventListener('animationend', () => {
+            // Add a small delay before starting the transition to make it smoother
+            setTimeout(() => {
+                body.classList.add('fade-out'); // Start the fade-out effect
+            }, 1000); // Delay before fade-out starts
+
+            // Wait for the fade-out transition to complete, then redirect
+            setTimeout(() => {
+                window.location.href = 'home3.html'; // Redirect to new page
+            }, 2000); // 1 second fade-out + 1 second delay before redirect
         });
     </script>
 </body>
