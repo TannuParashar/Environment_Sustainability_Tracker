@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Activity Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f9f4;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #6dcf84, #4cb658);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        .activity-form, .activity-history {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin: 10px 0 5px;
+            display: block;
+        }
+
+        select, input[type="number"], button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4cb658;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        button:hover {
+            background-color: #3a9b46;
+        }
+
+        .result {
+            margin-top: 40px;
+        }
+
+        .tips {
+            margin-top: 10px;
+            font-style: italic;
+            color: #4cb658;
+        }
+
+        .activity-log {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .activity-log p {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-button {
+            background-color: #f44336; /* Red color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8em;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .delete-button:hover {
+            background-color: #c62828;
+        }
+
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Align text to the left */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation links style */
+        .nav-links {
+            position: absolute;
+            left: 15px; /* Align to the left */
+            bottom: 15px; /* Position from the bottom */
+        }
+
+        .nav-links a {
+            margin-right: 20px;
+            padding: 5px 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 4px;
+            background-color: #000000; /* Background color for links */
+            color: white; /* Text color */
+        }
+
+        .nav-links a:hover {
+            background-color: #2e7d32; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Track Your Environmental Impact</h1>
+        <p>Fill in your activity details!</p>
+    </header>
+
+    <main>
+        <div class="activity-form">
+            <label for="activity">Select Activity:</label>
+            <select id="activity">
+                <option value="">--Select an Activity--</option>
+                <option value="excess-water">Excess Water Usage</option>
+                <option value="single-use-plastic">Single-Use Plastic</option>
+                <option value="high-fuel">High Fuel Consumption</option>
+               
+                <option value="air-pollution">Air Pollution from Factories</option>
+                <option value="water-pollution">Water Pollution from Waste Disposal</option>
+                <option value="soil-contamination">Soil Contamination</option>
+                
+                <option value="energy-consumption">Excessive Energy Consumption</option>
+                <option value="plastic-production">Plastic Production</option>
+                <option value="mining-activities">Mining Activities</option>
+                <option value="waste-generation">Waste Generation</option>
+                
+                
+                <option value="transport-carbon-emissions">Carbon Emissions from Transportation</option>
+                <option value="chemical-runoff">Chemical Runoff</option>
+        
+                <option value="non-renewable-resources">Use of Non-Renewable Resources</option>
+               
+            </select>
+
+            <label for="quantity">Enter Quantity Used:</label>
+            <input type="number" id="quantity" placeholder="Enter amount used (e.g., liters, kg, kWh, sqft)">
+
+            <button id="trackActivity">Track Activity</button>
+
+            <div class="result" id="result"></div>
+            <div class="tips" id="tips"></div>
+        </div>
+
+        <div class="activity-history">
+            <h2>Your Activity History</h2>
+            <div class="activity-log" id="activityLog"></div>
+        </div>
+
+        <footer class="footer">
+            <div class="nav-links">
+                <a href="home.html">Previous Page</a>
+                <a href="goalorg.html">Next Page</a>
+            </div>
+            <p><center>&copy; 2024 Your Environmental Commitment. All Rights Reserved.</center></p>
+        </footer>
+    </main>
+
+    <script>
+        // Initialize activity log
+        const activityLog = [];
+
+        // Tips for each activity
+        const tips = {
+            'excess-water': [
+                "Install water-saving faucets or showerheads.",
+                "Collect rainwater for non-potable use (like gardening).",
+                "Use dishwashers and washing machines only with full loads.",
+                "Check for leaks and fix them promptly.",
+                "Turn off the tap while brushing your teeth.",
+                "Implement drip irrigation systems in gardens.",
+                "Limit the use of lawn sprinklers, especially during the day."
+            ],
+            'single-use-plastic': [
+                "Carry reusable bags, water bottles, and straws.",
+                "Opt for products with minimal packaging.",
+                "Encourage stores to reduce plastic packaging.",
+                "Participate in local cleanup initiatives.",
+                "Switch to bamboo or metal alternatives.",
+                "Support businesses that promote eco-friendly practices.",
+                "Educate others about the impact of plastic waste."
+            ],
+            'high-fuel': [
+                "Carpool or use public transportation.",
+                "Switch to hybrid or electric vehicles.",
+                "Avoid unnecessary idling of your vehicle.",
+                "Use bicycles for short commutes.",
+                "Plan routes efficiently to save fuel.",
+                "Maintain proper tire pressure for better mileage.",
+                "Participate in programs promoting greener travel."
+            ],
+            'air-pollution': [
+                "Encourage industries to adopt cleaner technologies.",
+                "Support policies for stricter emission regulations.",
+                "Promote afforestation and urban greening initiatives.",
+                "Avoid burning leaves or trash in open areas.",
+                "Limit the use of diesel generators.",
+                "Use energy-efficient appliances at home.",
+                "Join or support clean air campaigns in your area."
+            ],
+            'water-pollution': [
+                "Reduce chemical use in households and gardens.",
+                "Participate in local river or beach cleanups.",
+                "Avoid flushing non-biodegradable products.",
+                "Dispose of hazardous waste responsibly.",
+                "Support wastewater treatment initiatives.",
+                "Promote organic farming to reduce runoff.",
+                "Raise awareness about the importance of clean water."
+            ],
+            'soil-contamination': [
+                "Opt for organic farming methods.",
+                "Avoid excessive use of pesticides and fertilizers.",
+                "Promote composting of organic waste.",
+                "Participate in soil health awareness campaigns.",
+                "Support land conservation programs.",
+                "Encourage sustainable waste management.",
+                "Minimize e-waste and dispose of it responsibly."
+            ],
+            'energy-consumption': [
+                "Switch to LED lighting.",
+                "Unplug appliances when not in use.",
+                "Install solar panels if feasible.",
+                "Use energy-efficient devices.",
+                "Limit air conditioning usage.",
+                "Opt for smart meters."
+            ],
+            'plastic-production': [
+                "Encourage recycling at all stages.",
+                "Support policies that limit plastic production.",
+                "Use biodegradable materials.",
+                "Promote circular economy practices.",
+                "Support research on alternatives to plastic."
+            ],
+            'mining-activities': [
+                "Support sustainable mining practices.",
+                "Promote recycling of minerals.",
+                "Use eco-friendly construction materials.",
+                "Raise awareness about mining’s environmental impact."
+            ],
+            'waste-generation': [
+                "Compost organic waste.",
+                "Recycle paper, plastic, and glass.",
+                "Participate in local waste management programs.",
+                "Opt for minimal packaging products.",
+                "Donate unused items."
+            ],
+            'transport-carbon-emissions':[
+                "Carpool or use public transport.",
+                "Walk or cycle for short distances.",
+                "Switch to electric vehicles.",
+                "Maintain vehicles regularly.",
+                "Avoid unnecessary travel."
+            ],
+            'chemical-runoff':[ "Use organic fertilizers.",
+                "Avoid chemical runoff into water sources.",
+                "Promote bioremediation methods.",
+                "Reduce pesticide use in agriculture.",
+                "Raise awareness about chemical pollution."
+            ],
+            'non-renewable-resources': [
+                "Support renewable energy projects.",
+                "Reduce fossil fuel consumption.",
+                "Switch to energy-efficient appliances.",
+                "Advocate for sustainable resource use.",
+                "Participate in energy conservation programs."
+            ]
+           
+        };
+
+        document.getElementById('trackActivity').addEventListener('click', function() {
+            const activity = document.getElementById('activity').value;
+            const quantity = document.getElementById('quantity').value;
+            const resultDiv = document.getElementById('result');
+            const tipsDiv = document.getElementById('tips');
+            const activityLogDiv = document.getElementById('activityLog');
+
+            if (activity && quantity) {
+                let impactMessage = '';
+                switch (activity) {
+                    case 'excess-water':
+                        impactMessage = `You used ${quantity} liters of water!`;
+                        break;
+                    case 'single-use-plastic':
+                        impactMessage = `You used ${quantity} kg of plastic!`;
+                        break;
+                    case 'high-fuel':
+                        impactMessage = `You have consumed ${quantity} liters of fuel!`;
+                        break;
+                    
+                    case 'air-pollution':
+                        impactMessage = `Your activities contributed to air pollution!`;
+                        break;
+                    case 'water-pollution':
+                        impactMessage = `Your activities contributed to water pollution!`;
+                        break;
+                    case 'soil-contamination':
+                        impactMessage = `You caused soil contamination with ${quantity} kg of chemicals!`;
+                        break;
+                    
+                    case 'energy-consumption':
+                        impactMessage = `You consumed ${quantity} kWh of energy!`;
+                        break;
+                    case 'plastic-production':
+                        impactMessage = `You produced ${quantity} kg of plastic!`;
+                        break;
+                    case 'mining-activities':
+                        impactMessage = `You engaged in mining activities affecting the environment!`;
+                        break;
+                    case 'waste-generation':
+                        impactMessage = `You generated ${quantity} kg of waste!`;
+                        break;
+                  
+                    case 'transport-carbon-emissions':
+                        impactMessage = `Your transportation caused carbon emissions!`;
+                        break;
+                    case 'chemical-runoff':
+                        impactMessage = `You caused chemical runoff into water bodies!`;
+                        break;
+                   
+                    case 'non-renewable-resources':
+                        impactMessage = `You used non-renewable resources!`;
+                        break;
+                   
+                    default:
+                        impactMessage = 'Activity not recognized.';
+                }
+
+                // Display the impact message
+                resultDiv.innerHTML = impactMessage;
+
+                // Display tips
+                tipsDiv.innerHTML = tips[activity];
+
+                // Log activity
+                const logEntry = `${impactMessage}  : ${new Date().toLocaleString()}`;
+                activityLog.push(logEntry);
+                updateActivityLog(activityLogDiv);
+
+                // Clear the form
+                document.getElementById('activity').value = '';
+                document.getElementById('quantity').value = '';
+            } else {
+                alert('Please select an activity and enter the quantity.');
+            }
+        });
+
+        function updateActivityLog(logDiv) {
+            logDiv.innerHTML = ''; // Clear previous logs
+            activityLog.forEach((log, index) => {
+                const logEntry = document.createElement('p');
+                logEntry.innerHTML = `${log} <button class="delete-button" onclick="deleteLog(${index})">Delete</button>`;
+                logDiv.appendChild(logEntry);
+            });
+        }
+
+        function deleteLog(index) {
+            activityLog.splice(index, 1); // Remove the log at the specified index
+            updateActivityLog(document.getElementById('activityLog')); // Update the displayed log
+        }
+    </script>
+</body>
+</html>
